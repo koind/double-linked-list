@@ -1,16 +1,17 @@
 package double_linked_list
 
 import (
+	"fmt"
 	"testing"
 )
 
 var testCases = map[int]struct{}{
-	2: struct{}{},
-	4: struct{}{},
-	5: struct{}{},
+	2: {},
+	4: {},
+	5: {},
 }
 
-func TestСheck(t *testing.T) {
+func TestCheck(t *testing.T) {
 	list := NewList()
 
 	list.PushFront(1)
@@ -31,6 +32,8 @@ func TestСheck(t *testing.T) {
 		if _, has := testCases[val]; !has {
 			t.Errorf("value should be in the list: %v - %v", val, testCases)
 		}
+
+		fmt.Println(item.Value())
 
 		item = item.Next()
 		if item == nil {

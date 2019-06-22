@@ -17,35 +17,14 @@ func (l *List) Len() int {
 }
 
 func (l *List) First() *Item {
-	if l.len == 0 {
-		return nil
-	}
-
 	return l.head
 }
 
 func (l *List) Last() *Item {
-	if l.len == 0 {
-		return nil
-	}
-
 	return l.tail
 }
 
 func (l *List) PushFront(v interface{}) {
-	item := &Item{value: v}
-	if l.head == nil {
-		l.head = item
-	} else {
-		l.tail.next = item
-		item.prev = l.tail
-	}
-
-	l.tail = item
-	l.len++
-}
-
-func (l *List) PushBack(v interface{}) {
 	item := &Item{value: v}
 	if l.tail == nil {
 		l.tail = item
@@ -55,6 +34,19 @@ func (l *List) PushBack(v interface{}) {
 	}
 
 	l.head = item
+	l.len++
+}
+
+func (l *List) PushBack(v interface{}) {
+	item := &Item{value: v}
+	if l.head == nil {
+		l.head = item
+	} else {
+		l.tail.next = item
+		item.prev = l.tail
+	}
+
+	l.tail = item
 	l.len++
 }
 
